@@ -12,7 +12,7 @@
  * 
  * @note 
  *
- * @authors Antonella Battauz Baron, Manuela Calvo
+ * @authors Antonella Battauz Baron y Manuela Calvo
  * 
  *
  * @section changelog

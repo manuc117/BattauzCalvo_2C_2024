@@ -12,9 +12,6 @@
 /*/==================[inclusions]=============================================*/
 #include "termistor.h"
 #include "analog_io_mcu.h"
-#include "timer_mcu.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 /*==================[macros and definitions]=================================*/
 
 /*==================[internal data declaration]==============================*/
