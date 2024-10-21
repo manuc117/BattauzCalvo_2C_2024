@@ -26,14 +26,39 @@
 /*==================[inclusions]=============================================*/
 #include <stdio.h>
 #include <stdint.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "termistor.h"
+#include "timer_mcu.h"
 /*==================[macros and definitions]=================================*/
-
+#define CONFIG_MESURE 769000
+uint_16t tempAmbiente = 0;
 /*==================[internal data definition]===============================*/
-
+TaskHandle_t medirTension_task_handle = NULL;
 /*==================[internal functions declaration]=========================*/
+void FuncTimerA(void* param)
+{
+	vTaskNotifyGiveFromISR(medirTension_task_handle, pdFALSE);
+}
 
+void CalibrarTempAmbiente(){
+	medir(&tempAmbiente);
+}
 /*==================[external functions definition]==========================*/
 void app_main(void){
-	printf("Hello world!\n");
+	TermistorInit();
+	CalibrarTempAmbiente();
+	
+	timer_config_t timer = {
+        .timer = TIMER_A,
+        .period = CONFIG_MEASURE,
+        .func_p = FuncTimerA,
+        .param_p = NULL
+    };
+
+	TimerInit(&timer);
+
+	xTaskCreate(&medirTensionTask, "Medir tension", 512, NULL, 5, &medirTension_task_handle);
+	TimerStart(timer.timer);
 }
 /*==================[end of file]============================================*/
