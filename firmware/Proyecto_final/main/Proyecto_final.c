@@ -1,4 +1,4 @@
-/*! @mainpage Template
+/*! @mainpage Proyecto_final
  *
  * @section genDesc General Description
  *
@@ -17,9 +17,9 @@
  *
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
- * | 12/09/2023 | Document creation		                         |
+ * | 21/10/2024 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @authors Antonella Battauz Baron (antobattauzbaron.abb@gmail.com) y Manuela Calvo (manuela.calvo@ingenieria.uner.edu.ar)
  *
  */
 
