@@ -1,4 +1,4 @@
-/*! @mainpage Ejemplo DSP
+/*! @mainpage Proyecto_Final
  *
  * @section genDesc General Description
  *
@@ -7,9 +7,9 @@
  *
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
- * | 02/04/2024 | Document creation		                         |
+ * | 18/10/2024 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Antonella Battauz Baron (antobattauzbaron.abb@gmail.com), Manuela Calvo (manuela.calvo@ingenieria.uner.ar)
  *
  */
 
