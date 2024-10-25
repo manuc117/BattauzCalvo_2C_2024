@@ -41,25 +41,36 @@ void FuncTimerA(void* param)
 void medirFrecResp(uint16_t cuentas){
 	uint16_t duracion = cuentas * CONFIG_MEASURE;
 	frecResp = MINUTO/duracion;
-	UartSendString(UART_PC, (const char*)UartItoa(frecResp,10));
+	UartSendString(UART_PC, ",");
 	UartSendString(UART_PC, " \r\n");
+	UartSendString(UART_PC, (const char*)UartItoa(frecResp,10));
+	
 }
 
 static void registrarTensionTask(void *pvParameter){
 
-	uint16_t tension_temperatura = 0;
+	uint16_t tempActual = 0;
 	uint16_t cuentas = 0;
+	uint16_t tempAnterior = 0;
 
 	while(true)
 	{
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-		medir(&tension_temperatura);
+		tempAnterior = tempActual;
+		medir(&tempActual);
 		cuentas++;
+		//UartSendString(UART_PC, (const char*)UartItoa(tempActual,10));
+		//UartSendString(UART_PC, ",");
+		//UartSendString(UART_PC, (const char*)UartItoa(tempAnterior,10));
+		//UartSendString(UART_PC, ",");
+		//UartSendString(UART_PC, (const char*)UartItoa(tempAmbiente,10));
+		//UartSendString(UART_PC, " \r\n");
+	
 		//Esto es provisorio para ver si vemos lo que deberíamos 
 		//UartSendString(UART_PC, (const char*)UartItoa(tension_temperatura,10));
 		//UartSendString(UART_PC, " \r\n");
 		
-		if(tension_temperatura == tempAmbiente){
+		if(tempAnterior < tempAmbiente && tempActual >= tempAmbiente){
 			medirFrecResp(cuentas);
 			cuentas = 0;
 		}
