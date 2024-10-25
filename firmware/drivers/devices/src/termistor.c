@@ -11,7 +11,6 @@
 
 /*/==================[inclusions]=============================================*/
 #include "termistor.h"
-#include "analog_io_mcu.h"
 /*==================[macros and definitions]=================================*/
 
 /*==================[internal data declaration]==============================*/
@@ -30,10 +29,10 @@ void TermistorInit(){
 
     analog_input_config_t termistorInput = {			
 	    .input = CH1,			
-	    .mode =	ADC_SINGLE,	
-	    .func_p =  NULL, 			
-	    .param_p = NULL,		
-	    .sample_frec = NULL
+	    .mode =	ADC_SINGLE	
+	  //  .func_p =  NULL, 			
+	 //   .param_p = NULL,		
+	   // .sample_frec = NULL
     }; 	
 
     AnalogInputInit(&termistorInput);
@@ -41,5 +40,5 @@ void TermistorInit(){
 
 void medir(uint16_t *tension)
 {
-    AnalogInputReadSingle(CH1, &tension);
+    AnalogInputReadSingle(CH1, tension);
 }
