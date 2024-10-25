@@ -22,10 +22,12 @@
 #include "timer_mcu.h"
 #include "uart_mcu.h"
 /*==================[macros and definitions]=================================*/
-#define CONFIG_MEASURE 769000
+#define CONFIG_MEASURE 100000
+#define MINUTO 60000000
 uint16_t tempAmbiente = 0;
+uint16_t frecResp = 0;
 /*==================[internal data definition]===============================*/
-TaskHandle_t medirTension_task_handle = NULL;
+TaskHandle_t registrarTension_task_handle = NULL;
 /*==================[internal functions declaration]=========================*/
 void CalibrarTempAmbiente(){
 	medir(&tempAmbiente);
@@ -33,23 +35,37 @@ void CalibrarTempAmbiente(){
 
 void FuncTimerA(void* param)
 {
-	vTaskNotifyGiveFromISR(medirTension_task_handle, pdFALSE);
+	vTaskNotifyGiveFromISR(registrarTension_task_handle, pdFALSE);
 }
 
-static void medirTensionTask(void *pvParameter){
+void medirFrecResp(uint16_t cuentas){
+	uint16_t duracion = cuentas * CONFIG_MEASURE;
+	frecResp = MINUTO/duracion;
+	UartSendString(UART_PC, (const char*)UartItoa(frecResp,10));
+	UartSendString(UART_PC, " \r\n");
+}
+
+static void registrarTensionTask(void *pvParameter){
 
 	uint16_t tension_temperatura = 0;
+	uint16_t cuentas = 0;
 
 	while(true)
 	{
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		medir(&tension_temperatura);
+		cuentas++;
 		//Esto es provisorio para ver si vemos lo que deberíamos 
-		UartSendString(UART_PC, (const char*)UartItoa(tension_temperatura,10));
-		UartSendString(UART_PC, " \r\n");
+		//UartSendString(UART_PC, (const char*)UartItoa(tension_temperatura,10));
+		//UartSendString(UART_PC, " \r\n");
+		
+		if(tension_temperatura == tempAmbiente){
+			medirFrecResp(cuentas);
+			cuentas = 0;
+		}
 	}
-
 }
+
 /*==================[external functions definition]==========================*/
 void app_main(void){
 	TermistorInit();
@@ -63,7 +79,7 @@ void app_main(void){
     };
 
 	TimerInit(&timer);
-	xTaskCreate(&medirTensionTask, "Medir tension", 512, NULL, 5, &medirTension_task_handle);
+	xTaskCreate(&registrarTensionTask, "Medir tension", 512, NULL, 5, &registrarTension_task_handle);
 	TimerStart(timer.timer);
 	//Esto es provisorio a ver si funciona correctamente
 	serial_config_t puertoSerie = {
