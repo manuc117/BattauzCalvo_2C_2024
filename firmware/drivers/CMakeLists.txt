@@ -34,6 +34,7 @@ set(srcs
     #"devices/src/max3010X.c"
     #"devices/src/spo2_algorithm.c"
     #"devices/src/heartRate.c"
+    "devices/src/termistor.c"
     )
 
 # Always included headers

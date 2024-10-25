@@ -45,7 +45,7 @@ static void medirTensionTask(void *pvParameter){
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		medir(&tension_temperatura);
 		//Esto es provisorio para ver si vemos lo que deberíamos 
-		UartSendString(UART_PC, (const char*)UartItoa(voltaje,10));
+		UartSendString(UART_PC, (const char*)UartItoa(tension_temperatura,10));
 		UartSendString(UART_PC, " \r\n");
 	}
 
@@ -54,7 +54,7 @@ static void medirTensionTask(void *pvParameter){
 void app_main(void){
 	TermistorInit();
 	CalibrarTempAmbiente();
-	
+
 	timer_config_t timer = {
         .timer = TIMER_A,
         .period = CONFIG_MEASURE,
