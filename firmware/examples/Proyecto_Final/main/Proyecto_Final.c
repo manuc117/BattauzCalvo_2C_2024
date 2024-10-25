@@ -1,25 +1,15 @@
-/*! @mainpage Proyecto_final
+/*! @mainpage Ejemplo DSP
  *
  * @section genDesc General Description
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
- *
- * @section hardConn Hardware Connection
- *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
- *
- *
+ * 
  * @section changelog Changelog
  *
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
- * | 21/10/2024 | Document creation		                         |
+ * | 02/04/2024 | Document creation		                         |
  *
- * @authors Antonella Battauz Baron (antobattauzbaron.abb@gmail.com) y Manuela Calvo (manuela.calvo@ingenieria.uner.edu.ar)
+ * @author Albano Peñalva (albano.penalva@uner.edu.ar)
  *
  */
 
@@ -31,14 +21,12 @@
 #include "termistor.h"
 #include "timer_mcu.h"
 #include "uart_mcu.h"
-
 /*==================[macros and definitions]=================================*/
-#define CONFIG_MESURE 769000
-uint_16t tempAmbiente = 0;
+#define CONFIG_MEASURE 769000
+uint16_t tempAmbiente = 0;
 /*==================[internal data definition]===============================*/
 TaskHandle_t medirTension_task_handle = NULL;
 /*==================[internal functions declaration]=========================*/
-
 void CalibrarTempAmbiente(){
 	medir(&tempAmbiente);
 }
