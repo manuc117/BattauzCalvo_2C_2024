@@ -1,6 +1,7 @@
 /*! @mainpage Proyecto_Final
  *
- * @section genDesc General Description
+ * @section Este programa permite levantar la curva respiratoria con un sensor de temperatura y medir la frecuencia respiratoria 
+ * a partir de la misma.
  *
  * 
  * @section changelog Changelog
@@ -23,31 +24,75 @@
 #include "uart_mcu.h"
 #include "switch.h"
 /*==================[macros and definitions]=================================*/
+/**
+ * @def CONFIG_MEASURE
+ * @brief Periodo del temporizador en microsegundos para notificar la tarea que registra la tensión.
+ */
 #define CONFIG_MEASURE 100000
-#define MINUTO 60000000
+/**
+ * @def FACTOR_CONVERSION
+ * @brief Factor para calcular la frecuencia respiratoria que viene dado por 60000000/100000, donde 
+ * 60000000 es 1 minuto en microsegundos y 100000 es CONFIG_MESURE.
+ */
 #define FACTOR_CONVERSION 600
+
+/**
+ * @brief Variable donde se almacena el valor de tensión de la temperatura ambiente calibrada.
+ */
 uint16_t tempAmbiente = 0;
+
+/**
+ * @brief Variable donde se almacena el valor de frecuencia respiratoria.
+ */
 uint16_t frecResp = 0;
 /*==================[internal data definition]===============================*/
+/**
+ * @brief Handle para la tarea que registra la tensión del sensor de temperatura.
+ */
 TaskHandle_t registrarTension_task_handle = NULL;
 /*==================[internal functions declaration]=========================*/
+/**
+ * @fn void CalibrarTempAmbiente()
+ * 
+ * @brief Función que calibra la temperatura ambiente.
+ */
 void CalibrarTempAmbiente(){
 	medir(&tempAmbiente);
 }
 
+/**
+ * @fn void FuncTimerA(void* param)
+ * 
+ * @brief Función del temporizador que notifica a la tarea `registrarTensionTask` para su ejecución.
+ * 
+ * @param param Parámetro opcional que se puede pasar a la función. No se utiliza en esta implementación.
+ */
 void FuncTimerA(void* param)
 {
 	vTaskNotifyGiveFromISR(registrarTension_task_handle, pdFALSE);
 }
 
+/**
+ * @fn void medirFrecResp(uint16_t cuentas)
+ * 
+ * @brief Función que calcula la frecuencia respiratoria.
+ * 
+ * @param cuentas cantidad de ticks entre cada inspiración y espiración (entre cada cruce por la referencia).
+ */
 void medirFrecResp(uint16_t cuentas){
-	//uint16_t duracion = cuentas * CONFIG_MEASURE;
-	//frecResp = MINUTO/duracion;
 	frecResp = FACTOR_CONVERSION/cuentas;	
+	UartSendString(UART_PC, "Frecuencia respiratoria: ");
 	UartSendString(UART_PC, (const char*)UartItoa(frecResp,10));
 	UartSendString(UART_PC, "\r\n");
 }
 
+/**
+ * @fn static void registrarTensionTask(void* pvParameter)
+ * 
+ * @brief Función que levanta la curva respiratoria.
+ * 
+ * @param pvParameter Parámetro opcional que se puede pasar a la función. No se utiliza en esta implementación.
+ */
 static void registrarTensionTask(void *pvParameter){
 
 	uint16_t tempActual = 0;
@@ -91,7 +136,6 @@ void app_main(void){
 
 	SwitchActivInt(SWITCH_1, &CalibrarTempAmbiente, NULL);
 
-	//Esto es provisorio a ver si funciona correctamente
 	serial_config_t puertoSerie = {
 		.port = UART_PC,
 		.baud_rate = 115200,
