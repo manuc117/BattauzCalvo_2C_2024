@@ -21,6 +21,7 @@
 #include "termistor.h"
 #include "timer_mcu.h"
 #include "uart_mcu.h"
+#include "switch.h"
 /*==================[macros and definitions]=================================*/
 #define CONFIG_MEASURE 100000
 #define MINUTO 60000000
@@ -42,11 +43,9 @@ void FuncTimerA(void* param)
 void medirFrecResp(uint16_t cuentas){
 	//uint16_t duracion = cuentas * CONFIG_MEASURE;
 	//frecResp = MINUTO/duracion;
-	frecResp = FACTOR_CONVERSION/cuentas;
-	UartSendString(UART_PC, ",");
-	UartSendString(UART_PC, " \r\n");
+	frecResp = FACTOR_CONVERSION/cuentas;	
 	UartSendString(UART_PC, (const char*)UartItoa(frecResp,10));
-	
+	UartSendString(UART_PC, "\r\n");
 }
 
 static void registrarTensionTask(void *pvParameter){
@@ -61,15 +60,10 @@ static void registrarTensionTask(void *pvParameter){
 		tempAnterior = tempActual;
 		medir(&tempActual);
 		cuentas++;
+
 		//UartSendString(UART_PC, (const char*)UartItoa(tempActual,10));
 		//UartSendString(UART_PC, ",");
-		//UartSendString(UART_PC, (const char*)UartItoa(tempAnterior,10));
-		//UartSendString(UART_PC, ",");
 		//UartSendString(UART_PC, (const char*)UartItoa(tempAmbiente,10));
-		//UartSendString(UART_PC, " \r\n");
-	
-		//Esto es provisorio para ver si vemos lo que deberíamos 
-		//UartSendString(UART_PC, (const char*)UartItoa(tension_temperatura,10));
 		//UartSendString(UART_PC, " \r\n");
 		
 		if(tempAnterior < tempAmbiente && tempActual >= tempAmbiente){
@@ -94,6 +88,9 @@ void app_main(void){
 	TimerInit(&timer);
 	xTaskCreate(&registrarTensionTask, "Medir tension", 512, NULL, 5, &registrarTension_task_handle);
 	TimerStart(timer.timer);
+
+	SwitchActivInt(SWITCH_1, &CalibrarTempAmbiente, NULL);
+
 	//Esto es provisorio a ver si funciona correctamente
 	serial_config_t puertoSerie = {
 		.port = UART_PC,
