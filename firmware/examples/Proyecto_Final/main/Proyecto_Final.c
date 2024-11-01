@@ -24,6 +24,7 @@
 /*==================[macros and definitions]=================================*/
 #define CONFIG_MEASURE 100000
 #define MINUTO 60000000
+#define FACTOR_CONVERSION 600
 uint16_t tempAmbiente = 0;
 uint16_t frecResp = 0;
 /*==================[internal data definition]===============================*/
@@ -39,8 +40,9 @@ void FuncTimerA(void* param)
 }
 
 void medirFrecResp(uint16_t cuentas){
-	uint16_t duracion = cuentas * CONFIG_MEASURE;
-	frecResp = MINUTO/duracion;
+	//uint16_t duracion = cuentas * CONFIG_MEASURE;
+	//frecResp = MINUTO/duracion;
+	frecResp = FACTOR_CONVERSION/cuentas;
 	UartSendString(UART_PC, ",");
 	UartSendString(UART_PC, " \r\n");
 	UartSendString(UART_PC, (const char*)UartItoa(frecResp,10));
