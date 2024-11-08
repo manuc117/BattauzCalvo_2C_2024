@@ -1,6 +1,6 @@
 /**
  * @file termistor.c
- * @authors Antonella Battauz Baron y Manuela Calvo(manuela.calvo@ingenieria.uner.edu.ar)
+ * @authors Antonella Battauz Baron (antobattauzbaron.abb@gmail.com) y Manuela Calvo(manuela.calvo@ingenieria.uner.edu.ar)
  * @brief 
  * @version 0.1
  * @date 2024-10-04
@@ -30,9 +30,9 @@ void TermistorInit(){
     analog_input_config_t termistorInput = {			
 	    .input = CH1,			
 	    .mode =	ADC_SINGLE	
-	  //  .func_p =  NULL, 			
-	 //   .param_p = NULL,		
-	   // .sample_frec = NULL
+	  //.func_p =  NULL, 			
+	  //.param_p = NULL,		
+	  //.sample_frec = NULL
     }; 	
 
     AnalogInputInit(&termistorInput);

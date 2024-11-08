@@ -31,12 +31,15 @@
 /==================[external data declaration]==============================/
 /==================[external functions declaration]=========================*/
 /**
+ * @fn void TermistorInit()
  * @brief Inicialización del termistor
  */
 void TermistorInit();
+
 /**
- * @brief mide el voltaje a la salida de un circuito que varía en función de la temperatura
- * @param tension puntero a la variable donde se almacena el valor de tensión (en mV)
+ * @fn void medir(uint16_t *tension)
+ * @brief Mide el voltaje a la salida de un circuito que varía en función de la temperatura.
+ * @param tension Puntero a la variable donde se almacena el valor de tensión (en mV).
  */
 void medir(uint16_t *tension);
 /*/==================[end of file]============================================*/
