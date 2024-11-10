@@ -1,8 +1,14 @@
 /*! @mainpage Proyecto_Final
  *
  * @section Este programa permite levantar la curva respiratoria con un sensor de temperatura y medir la frecuencia respiratoria 
- * a partir de la misma.
+ * a partir de la misma; la frecuencia respiratoria se muestra por la UART.
  *
+ * @section hardConn Hardware Connection
+ *
+ * |     ESP32      |     PERIFERICO    |
+ * |:--------------:|:------------------|
+ * | 	 CH1	 	|    Sensor temp    |
+ * | 	 GND	 	|  GND Sensor temp  |
  * 
  * @section changelog Changelog
  *
@@ -10,7 +16,7 @@
  * |:----------:|:-----------------------------------------------|
  * | 18/10/2024 | Document creation		                         |
  *
- * @author Antonella Battauz Baron (antobattauzbaron.abb@gmail.com), Manuela Calvo (manuela.calvo@ingenieria.uner.ar)
+ * @authors Antonella Battauz Baron (antobattauzbaron.abb@gmail.com), Manuela Calvo (manuela.calvo@ingenieria.uner.ar)
  *
  */
 
@@ -30,7 +36,6 @@
  * @brief Periodo del temporizador en microsegundos para notificar la tarea que registra la tensión.
  */
 #define CONFIG_MEASURE 100000
-#define CONFIG_SEND 10000000
 /**
  * @def FACTOR_CONVERSION
  * @brief Factor para calcular la frecuencia respiratoria que viene dado por 60000000/100000, donde 
@@ -79,17 +84,18 @@ void FuncTimerA(void* param)
 /**
  * @fn void medirFrecResp(uint16_t cuentas)
  * 
- * @brief Función que calcula la frecuencia respiratoria.
+ * @brief Función que calcula la frecuencia respiratoria y la informa por la UART.
  * 
  * @param cuentas cantidad de ticks entre cada inspiración y espiración (entre cada cruce por la referencia).
  */
 void medirFrecResp(uint16_t cuentas){
+
 	frecResp = FACTOR_CONVERSION/cuentas;	
+
 	UartSendString(UART_PC, "Frecuencia respiratoria: ");
 	UartSendString(UART_PC, (const char*)UartItoa(frecResp,10));
 	UartSendString(UART_PC, "\r\n");
 }
-
 /**
  * @fn static void registrarTensionTask(void* pvParameter)
  * 
@@ -109,11 +115,11 @@ static void registrarTensionTask(void *pvParameter){
 		tempAnterior = tempActual;
 		medir(&tempActual);
 		cuentas++;
-
-		UartSendString(UART_PC, (const char*)UartItoa(tempActual,10));
-		UartSendString(UART_PC, ",");
-		UartSendString(UART_PC, (const char*)UartItoa(tempAmbiente,10));
-		UartSendString(UART_PC, " \r\n");
+		
+		//UartSendString(UART_PC, (const char*)UartItoa(tempActual,10));
+		//UartSendString(UART_PC, ",");
+		//UartSendString(UART_PC, (const char*)UartItoa(tempAmbiente,10));
+		//UartSendString(UART_PC, " \r\n");
 		
 		if(tempAnterior < tempAmbiente && tempActual >= tempAmbiente){
 			medirFrecResp(cuentas);
@@ -124,6 +130,7 @@ static void registrarTensionTask(void *pvParameter){
 
 /*==================[external functions definition]==========================*/
 void app_main(void){
+
 	TermistorInit();
 	CalibrarTempAmbiente();
 
