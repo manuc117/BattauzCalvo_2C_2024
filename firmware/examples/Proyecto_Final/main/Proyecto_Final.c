@@ -23,7 +23,7 @@
 #include "timer_mcu.h"
 #include "uart_mcu.h"
 #include "switch.h"
-#include "ble_mcu.h"
+
 /*==================[macros and definitions]=================================*/
 /**
  * @def CONFIG_MEASURE
@@ -43,19 +43,17 @@
  */
 uint16_t tempAmbiente = 0;
 
-uint16_t suma_frecuencias = 0;
-	uint16_t contador = 0;
-
 /**
  * @brief Variable donde se almacena el valor de frecuencia respiratoria.
  */
 uint16_t frecResp = 0;
+
 /*==================[internal data definition]===============================*/
 /**
  * @brief Handle para la tarea que registra la tensión del sensor de temperatura.
  */
 TaskHandle_t registrarTension_task_handle = NULL;
-TaskHandle_t enviarDatos_task_handle = NULL;
+
 /*==================[internal functions declaration]=========================*/
 /**
  * @fn void CalibrarTempAmbiente()
@@ -78,11 +76,6 @@ void FuncTimerA(void* param)
 	vTaskNotifyGiveFromISR(registrarTension_task_handle, pdFALSE);
 }
 
-void FuncTimerB(void* param)
-{
-	vTaskNotifyGiveFromISR(enviarDatos_task_handle, pdFALSE);
-}
-
 /**
  * @fn void medirFrecResp(uint16_t cuentas)
  * 
@@ -95,8 +88,6 @@ void medirFrecResp(uint16_t cuentas){
 	UartSendString(UART_PC, "Frecuencia respiratoria: ");
 	UartSendString(UART_PC, (const char*)UartItoa(frecResp,10));
 	UartSendString(UART_PC, "\r\n");
-	suma_frecuencias = suma_frecuencias + frecResp;
-	contador++;
 }
 
 /**
@@ -119,10 +110,10 @@ static void registrarTensionTask(void *pvParameter){
 		medir(&tempActual);
 		cuentas++;
 
-		//UartSendString(UART_PC, (const char*)UartItoa(tempActual,10));
-		//UartSendString(UART_PC, ",");
-		//UartSendString(UART_PC, (const char*)UartItoa(tempAmbiente,10));
-		//UartSendString(UART_PC, " \r\n");
+		UartSendString(UART_PC, (const char*)UartItoa(tempActual,10));
+		UartSendString(UART_PC, ",");
+		UartSendString(UART_PC, (const char*)UartItoa(tempAmbiente,10));
+		UartSendString(UART_PC, " \r\n");
 		
 		if(tempAnterior < tempAmbiente && tempActual >= tempAmbiente){
 			medirFrecResp(cuentas);
@@ -130,41 +121,22 @@ static void registrarTensionTask(void *pvParameter){
 		}
 	}
 }
-static void enviarDatosTask(void *pvParameter){
-	
-	while(true)
-	{
-		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-		BleSendString(suma_frecuencias/contador);
-		suma_frecuencias = 0;
-		contador = 0;
-	}
-}
+
 /*==================[external functions definition]==========================*/
 void app_main(void){
 	TermistorInit();
 	CalibrarTempAmbiente();
 
-	timer_config_t timer = {
+	timer_config_t timerA = {
         .timer = TIMER_A,
         .period = CONFIG_MEASURE,
         .func_p = FuncTimerA,
         .param_p = NULL
     };
 
-	TimerInit(&timer);
+	TimerInit(&timerA);
 	xTaskCreate(&registrarTensionTask, "Medir tension", 512, NULL, 5, &registrarTension_task_handle);
-	TimerStart(timer.timer);
-
-	timer_config_t timer_B = {
-        .timer = TIMER_B,
-        .period = CONFIG_SEND,
-        .func_p = FuncTimerA,
-        .param_p = NULL
-    };
-	TimerInit(&timer_B);
-	xTaskCreate(&enviarDatosTask, "Enviar datos", 512, NULL, 5, &enviarDatos_task_handle);
-	TimerStart(timer.timer);
+	TimerStart(timerA.timer);
 
 	SwitchActivInt(SWITCH_1, &CalibrarTempAmbiente, NULL);
 
@@ -176,10 +148,5 @@ void app_main(void){
 	};
 	UartInit(&puertoSerie);
 
-	ble_config_t ble_configuration = {
-        "ESP_EDU_1",
-        medirFrecResp
-    };
-	BleInit(&ble_configuration);
 }
 /*==================[end of file]============================================*/

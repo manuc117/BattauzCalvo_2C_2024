@@ -35,6 +35,9 @@
         },
         {
             "path": "examples/Proyecto_Final"
+        },
+        {
+            "path": "examples/ProyectoFinal"
         }
     ],
     "settings": {
@@ -96,7 +99,10 @@
             "vumeter.h": "c",
             "rtc_mcu.h": "c",
             "fft.h": "c",
-            "i2c.h": "c"
+            "i2c.h": "c",
+            "esp_bt.h": "c",
+            "ble_hid_mcu.h": "c",
+            "ble_mcu.h": "c"
         },
     },
     "tasks": {
