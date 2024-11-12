@@ -1,6 +1,8 @@
 /*! @mainpage Proyecto_Final
  *
- * @section El programa permite levantar la curva respiratoria con un sensor de temperatura y medir la frecuencia respiratoria a partir de la misma; la frecuencia respiratoria se muestra por la UART.
+ * @section genDesc General Description
+ * El programa permite levantar la curva respiratoria con un sensor de temperatura y medir la frecuencia respiratoria 
+ * a partir de la misma; la frecuencia respiratoria se muestra por la UART.
  *
  * @section hardConn Hardware Connection
  *
