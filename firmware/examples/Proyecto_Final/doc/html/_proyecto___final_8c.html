@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto Final: Referencia del archivo C:/Repositorios/BattauzCalvo_2C_2024/firmware/examples/Proyecto_Final/main/Proyecto_Final.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Proyecto Final<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Proyecto final de Electrónica Programable</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_proyecto___final_8c.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo Proyecto_Final.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="termistor_8h_source.html">termistor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="timer__mcu_8h_source.html">timer_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="uart__mcu_8h_source.html">uart_mcu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="switch_8h_source.html">switch.h</a>&quot;</code><br />
+</div>
+<p><a href="_proyecto___final_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:abd5eb5b2a97dcc2187764b134741be71" id="r_abd5eb5b2a97dcc2187764b134741be71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd5eb5b2a97dcc2187764b134741be71">CONFIG_MEASURE</a>&#160;&#160;&#160;100000</td></tr>
+<tr class="memdesc:abd5eb5b2a97dcc2187764b134741be71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Periodo del temporizador en microsegundos para notificar la tarea que registra la tensión.  <br /></td></tr>
+<tr class="separator:abd5eb5b2a97dcc2187764b134741be71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab01dd6cba022567324c4f55c4567d016" id="r_ab01dd6cba022567324c4f55c4567d016"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab01dd6cba022567324c4f55c4567d016">FACTOR_CONVERSION</a>&#160;&#160;&#160;600</td></tr>
+<tr class="memdesc:ab01dd6cba022567324c4f55c4567d016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factor para calcular la frecuencia respiratoria que viene dado por 60000000/100000, donde 60000000 es 1 minuto en microsegundos y 100000 es CONFIG_MESURE.  <br /></td></tr>
+<tr class="separator:ab01dd6cba022567324c4f55c4567d016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a7a1e5f0a26dd58935c79fcfe1e668d02" id="r_a7a1e5f0a26dd58935c79fcfe1e668d02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a1e5f0a26dd58935c79fcfe1e668d02">CalibrarTempAmbiente</a> ()</td></tr>
+<tr class="memdesc:a7a1e5f0a26dd58935c79fcfe1e668d02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que calibra la temperatura ambiente.  <br /></td></tr>
+<tr class="separator:a7a1e5f0a26dd58935c79fcfe1e668d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaccfed84cd1498a05ea04a65f1209b1" id="r_afaccfed84cd1498a05ea04a65f1209b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaccfed84cd1498a05ea04a65f1209b1">FuncTimerA</a> (void *param)</td></tr>
+<tr class="memdesc:afaccfed84cd1498a05ea04a65f1209b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función del temporizador que notifica a la tarea <code>registrarTensionTask</code> para su ejecución.  <br /></td></tr>
+<tr class="separator:afaccfed84cd1498a05ea04a65f1209b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b2d0d835bc022ca96f0817fb1bc1737" id="r_a9b2d0d835bc022ca96f0817fb1bc1737"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b2d0d835bc022ca96f0817fb1bc1737">medirFrecResp</a> (uint16_t cuentas)</td></tr>
+<tr class="memdesc:a9b2d0d835bc022ca96f0817fb1bc1737"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que calcula la frecuencia respiratoria y la informa por la UART.  <br /></td></tr>
+<tr class="separator:a9b2d0d835bc022ca96f0817fb1bc1737"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84e21c92d3ff41f03b131bc415d09308" id="r_a84e21c92d3ff41f03b131bc415d09308"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84e21c92d3ff41f03b131bc415d09308">registrarTensionTask</a> (void *pvParameter)</td></tr>
+<tr class="memdesc:a84e21c92d3ff41f03b131bc415d09308"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función que levanta la curva respiratoria.  <br /></td></tr>
+<tr class="separator:a84e21c92d3ff41f03b131bc415d09308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630544a7f0a2cc40d8a7fefab7e2fe70" id="r_a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a> (void)</td></tr>
+<tr class="separator:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a52d5da4865109c94eb6105ad33c2f9e0" id="r_a52d5da4865109c94eb6105ad33c2f9e0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52d5da4865109c94eb6105ad33c2f9e0">tempAmbiente</a> = 0</td></tr>
+<tr class="memdesc:a52d5da4865109c94eb6105ad33c2f9e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable donde se almacena el valor de tensión de la temperatura ambiente calibrada.  <br /></td></tr>
+<tr class="separator:a52d5da4865109c94eb6105ad33c2f9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d01def3dbf61ecf0831e725d6be2ed2" id="r_a0d01def3dbf61ecf0831e725d6be2ed2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d01def3dbf61ecf0831e725d6be2ed2">frecResp</a> = 0</td></tr>
+<tr class="memdesc:a0d01def3dbf61ecf0831e725d6be2ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable donde se almacena el valor de frecuencia respiratoria.  <br /></td></tr>
+<tr class="separator:a0d01def3dbf61ecf0831e725d6be2ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf459135386f4cd82b36c81309c958f3" id="r_abf459135386f4cd82b36c81309c958f3"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf459135386f4cd82b36c81309c958f3">registrarTension_task_handle</a> = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td></tr>
+<tr class="memdesc:abf459135386f4cd82b36c81309c958f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle para la tarea que registra la tensión del sensor de temperatura.  <br /></td></tr>
+<tr class="separator:abf459135386f4cd82b36c81309c958f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de «define»</h2>
+<a id="abd5eb5b2a97dcc2187764b134741be71" name="abd5eb5b2a97dcc2187764b134741be71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd5eb5b2a97dcc2187764b134741be71">&#9670;&#160;</a></span>CONFIG_MEASURE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONFIG_MEASURE&#160;&#160;&#160;100000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Periodo del temporizador en microsegundos para notificar la tarea que registra la tensión. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00039">39</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00133">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="ab01dd6cba022567324c4f55c4567d016" name="ab01dd6cba022567324c4f55c4567d016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab01dd6cba022567324c4f55c4567d016">&#9670;&#160;</a></span>FACTOR_CONVERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FACTOR_CONVERSION&#160;&#160;&#160;600</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Factor para calcular la frecuencia respiratoria que viene dado por 60000000/100000, donde 60000000 es 1 minuto en microsegundos y 100000 es CONFIG_MESURE. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00045">45</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00092">medirFrecResp()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="a630544a7f0a2cc40d8a7fefab7e2fe70" name="a630544a7f0a2cc40d8a7fefab7e2fe70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630544a7f0a2cc40d8a7fefab7e2fe70">&#9670;&#160;</a></span>app_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void app_main </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00133">133</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto___final_8c_source.html#l00069">CalibrarTempAmbiente()</a>, <a class="el" href="_proyecto___final_8c_source.html#l00039">CONFIG_MEASURE</a>, <a class="el" href="_proyecto___final_8c_source.html#l00080">FuncTimerA()</a>, <a class="el" href="ili9341_8c_source.html#l00019">NULL</a>, <a class="el" href="uart__mcu_8h_source.html#l00039">serial_config_t::port</a>, <a class="el" href="_proyecto___final_8c_source.html#l00061">registrarTension_task_handle</a>, <a class="el" href="_proyecto___final_8c_source.html#l00107">registrarTensionTask()</a>, <a class="el" href="switch_8h_source.html#l00032">SWITCH_1</a>, <a class="el" href="switch_8c_source.html#l00047">SwitchActivInt()</a>, <a class="el" href="termistor_8c_source.html#l00031">TermistorInit()</a>, <a class="el" href="timer__mcu_8h_source.html#l00040">timer_config_t::timer</a>, <a class="el" href="timer__mcu_8h_source.html#l00032">TIMER_A</a>, <a class="el" href="timer__mcu_8c_source.html#l00067">TimerInit()</a>, <a class="el" href="timer__mcu_8c_source.html#l00116">TimerStart()</a>, <a class="el" href="uart__mcu_8h_source.html#l00032">UART_PC</a> y <a class="el" href="uart__mcu_8c_source.html#l00107">UartInit()</a>.</p>
+
+</div>
+</div>
+<a id="a7a1e5f0a26dd58935c79fcfe1e668d02" name="a7a1e5f0a26dd58935c79fcfe1e668d02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a1e5f0a26dd58935c79fcfe1e668d02">&#9670;&#160;</a></span>CalibrarTempAmbiente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CalibrarTempAmbiente </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función que calibra la temperatura ambiente. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00069">69</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto___final_8c_source.html#l00050">tempAmbiente</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00133">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="afaccfed84cd1498a05ea04a65f1209b1" name="afaccfed84cd1498a05ea04a65f1209b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaccfed84cd1498a05ea04a65f1209b1">&#9670;&#160;</a></span>FuncTimerA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FuncTimerA </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>param</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función del temporizador que notifica a la tarea <code>registrarTensionTask</code> para su ejecución. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>Parámetro opcional que se puede pasar a la función. No se utiliza en esta implementación. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00080">80</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto___final_8c_source.html#l00061">registrarTension_task_handle</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00133">app_main()</a>.</p>
+
+</div>
+</div>
+<a id="a9b2d0d835bc022ca96f0817fb1bc1737" name="a9b2d0d835bc022ca96f0817fb1bc1737"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b2d0d835bc022ca96f0817fb1bc1737">&#9670;&#160;</a></span>medirFrecResp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void medirFrecResp </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>cuentas</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Función que calcula la frecuencia respiratoria y la informa por la UART. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cuentas</td><td>cantidad de ticks entre cada inspiración y espiración (entre cada cruce por la referencia). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00092">92</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto___final_8c_source.html#l00045">FACTOR_CONVERSION</a>, <a class="el" href="_proyecto___final_8c_source.html#l00055">frecResp</a>, <a class="el" href="uart__mcu_8h_source.html#l00032">UART_PC</a>, <a class="el" href="uart__mcu_8c_source.html#l00222">UartItoa()</a> y <a class="el" href="uart__mcu_8c_source.html#l00193">UartSendString()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00107">registrarTensionTask()</a>.</p>
+
+</div>
+</div>
+<a id="a84e21c92d3ff41f03b131bc415d09308" name="a84e21c92d3ff41f03b131bc415d09308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84e21c92d3ff41f03b131bc415d09308">&#9670;&#160;</a></span>registrarTensionTask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void registrarTensionTask </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>pvParameter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Función que levanta la curva respiratoria. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pvParameter</td><td>Parámetro opcional que se puede pasar a la función. No se utiliza en esta implementación. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00107">107</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_proyecto___final_8c_source.html#l00092">medirFrecResp()</a> y <a class="el" href="_proyecto___final_8c_source.html#l00050">tempAmbiente</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00133">app_main()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de variables</h2>
+<a id="a0d01def3dbf61ecf0831e725d6be2ed2" name="a0d01def3dbf61ecf0831e725d6be2ed2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d01def3dbf61ecf0831e725d6be2ed2">&#9670;&#160;</a></span>frecResp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t frecResp = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable donde se almacena el valor de frecuencia respiratoria. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00055">55</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00092">medirFrecResp()</a>.</p>
+
+</div>
+</div>
+<a id="abf459135386f4cd82b36c81309c958f3" name="abf459135386f4cd82b36c81309c958f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf459135386f4cd82b36c81309c958f3">&#9670;&#160;</a></span>registrarTension_task_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TaskHandle_t registrarTension_task_handle = <a class="el" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handle para la tarea que registra la tensión del sensor de temperatura. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00061">61</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00133">app_main()</a> y <a class="el" href="_proyecto___final_8c_source.html#l00080">FuncTimerA()</a>.</p>
+
+</div>
+</div>
+<a id="a52d5da4865109c94eb6105ad33c2f9e0" name="a52d5da4865109c94eb6105ad33c2f9e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52d5da4865109c94eb6105ad33c2f9e0">&#9670;&#160;</a></span>tempAmbiente</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t tempAmbiente = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable donde se almacena el valor de tensión de la temperatura ambiente calibrada. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_proyecto___final_8c_source.html#l00050">50</a> del archivo <a class="el" href="_proyecto___final_8c_source.html">Proyecto_Final.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_proyecto___final_8c_source.html#l00069">CalibrarTempAmbiente()</a> y <a class="el" href="_proyecto___final_8c_source.html#l00107">registrarTensionTask()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_aeefa11cbea9569132de7ae3067290b7.html">BattauzCalvo_2C_2024</a></li><li class="navelem"><a class="el" href="dir_a9d7826293ad74165287443c3c1fd8a7.html">firmware</a></li><li class="navelem"><a class="el" href="dir_b37e4ff8c0f4381f26d253256ee36359.html">examples</a></li><li class="navelem"><a class="el" href="dir_9f405a69080afe0f4323aa7b9c2e2f54.html">Proyecto_Final</a></li><li class="navelem"><a class="el" href="dir_03e54f65869b4b5b13f9efd71e76bea9.html">main</a></li><li class="navelem"><a class="el" href="_proyecto___final_8c.html">Proyecto_Final.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>
